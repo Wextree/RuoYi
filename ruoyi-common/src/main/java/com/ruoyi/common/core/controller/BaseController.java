@@ -1,7 +1,10 @@
 package com.ruoyi.common.core.controller;
 
+import com.github.pagehelper.PageHelper;
 import com.ruoyi.common.core.page.PageDomain;
+import com.ruoyi.common.core.page.TableSupport;
 import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.common.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.WebDataBinder;
@@ -34,7 +37,14 @@ public class BaseController {
      * 设置请求分页数据
      */
     protected void startPage(){
-        PageDomain pageDomain;
+        PageDomain pageDomain = TableSupport.buildPageRequest();
+        Integer pageNum = pageDomain.getPageNum();
+        Integer pageSize = pageDomain.getPageSize();
+
+        if (StringUtils.isNotNull(pageNum) && StringUtils.isNotNull(pageSize)){
+//            String orderBy = SqlUtil.escapeOrderBySql(pageDomain.getOrderBy());
+//            PageHelper.startPage(pageNum, pageSize, orderBy);
+        }
     }
 
 }
