@@ -5,6 +5,7 @@ import com.ruoyi.common.core.page.PageDomain;
 import com.ruoyi.common.core.page.TableSupport;
 import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.sql.SqlUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.WebDataBinder;
@@ -42,8 +43,8 @@ public class BaseController {
         Integer pageSize = pageDomain.getPageSize();
 
         if (StringUtils.isNotNull(pageNum) && StringUtils.isNotNull(pageSize)){
-//            String orderBy = SqlUtil.escapeOrderBySql(pageDomain.getOrderBy());
-//            PageHelper.startPage(pageNum, pageSize, orderBy);
+            String orderBy = SqlUtils.escapeOrderBySql(pageDomain.getOrderBy());
+            PageHelper.startPage(pageNum, pageSize, orderBy);
         }
     }
 
