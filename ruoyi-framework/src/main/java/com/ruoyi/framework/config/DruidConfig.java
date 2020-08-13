@@ -45,7 +45,7 @@ public class DruidConfig {
     }
 
     @Bean(name = "dynamicDataSource")
-    @Primary
+    @Primary  // 优先考虑，优先考虑被注解的对象注入
     public DynamicDataSource dataSource(DataSource masterDataSource) {
         Map<Object, Object> targetDataSources = new HashMap<>();
         targetDataSources.put(DataSourceType.MASTER.name(), masterDataSource);
